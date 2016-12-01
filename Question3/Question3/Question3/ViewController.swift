@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         getOringin()
     }
     @IBAction func sendPost(_ sender: UIButton) {
-        
+        postRequest()
     }
 
     override func viewDidLoad() {
@@ -44,6 +44,28 @@ class ViewController: UIViewController {
             NSLog(originString)
         })
         dataTask.resume()
+    }
+    func postRequest(){
+        let url = URL(string: "https://httpbin.org/post")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        let postDate = Date()
+        let locale = Locale(identifier: "zh_TW")
+        let dateFormatter = DateFormatter()
+        let postDateString = dateFormatter.string(from: postDate)
+        let postBody = ["time": postDateString]
+        let postBodyData = try! JSONSerialization.data(withJSONObject: postBody, options: JSONSerialization.WritingOptions.prettyPrinted)
+        let uploadTask = URLSession.shared.uploadTask(with: request, from: postBodyData, completionHandler: {
+            (data:Data?, response:URLResponse?,error:Error?) in
+            guard response != nil else{
+                print("沒收到response")
+                return
+            }
+            let recieveDate = Date()
+            let diffOfDate = recieveDate.timeIntervalSince(postDate)
+            NSLog("花了\(diffOfDate)秒")
+        })
+        uploadTask.resume()
     }
 }
 

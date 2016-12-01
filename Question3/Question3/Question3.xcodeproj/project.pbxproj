@@ -26,7 +26,6 @@
 		D03EF22A1DEEF7B5003F3BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D03EF22D1DEEF7B5003F3BAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D03EF22F1DEEF7B5003F3BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D03EF2351DEEFB85003F3BAC /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +67,6 @@
 				D03EF22A1DEEF7B5003F3BAC /* Assets.xcassets */,
 				D03EF22C1DEEF7B5003F3BAC /* LaunchScreen.storyboard */,
 				D03EF22F1DEEF7B5003F3BAC /* Info.plist */,
-				D03EF2351DEEFB85003F3BAC /* MyPlayground.playground */,
 			);
 			path = Question3;
 			sourceTree = "<group>";
@@ -381,6 +379,7 @@
 				D03EF2341DEEF7B5003F3BAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
