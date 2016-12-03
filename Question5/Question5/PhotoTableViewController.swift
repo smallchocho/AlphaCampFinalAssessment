@@ -9,6 +9,8 @@
 import UIKit
 
 class PhotoTableViewController: UITableViewController {
+    var selectedPhotoImage:String?
+    var selectedLabel:String?
     @IBOutlet weak var takePhoto: UIBarButtonItem!
     let photoDataBase = [
         ["photoImage":"神劍闖江湖-京都大火篇",
@@ -20,8 +22,6 @@ class PhotoTableViewController: UITableViewController {
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -40,24 +40,22 @@ class PhotoTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return photoDataBase.count
     }
-
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PhotoTableViewCell
         cell.photoImage.image = UIImage(named: photoDataBase[indexPath.row]["photoImage"]!)
         cell.dataLabel.text = photoDataBase[indexPath.row]["photoLabel"]
-
         return cell
     }
-    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        
-    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedLabel = photoDataBase[indexPath.row]["photoLabel"]
+        selectedPhotoImage = photoDataBase[indexPath.row]["photoImage"]
 
+        performSegue(withIdentifier: "GoToDetailPhotoPage", sender: nil)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -65,7 +63,6 @@ class PhotoTableViewController: UITableViewController {
         return true
     }
     */
-
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -93,14 +90,14 @@ class PhotoTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destination = segue.destination as! PhotoDetailViewController
+        destination.photoTextfield = selectedLabel
+        destination.photoImage = selectedPhotoImage
     }
-    */
+    
 
 }

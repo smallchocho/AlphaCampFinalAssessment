@@ -22,15 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZCr-R5-YKO">
-                                <rect key="frame" x="37" y="89" width="300" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZCr-R5-YKO">
+                                <rect key="frame" x="37" y="64" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="U3E-HA-Pqh"/>
                                     <constraint firstAttribute="height" constant="300" id="pJy-lC-sII"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入相片名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lPV-qb-UGb">
-                                <rect key="frame" x="37" y="417" width="300" height="30"/>
+                                <rect key="frame" x="37" y="374" width="300" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -39,13 +39,17 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZCr-R5-YKO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EpX-2A-BR8"/>
-                            <constraint firstItem="ZCr-R5-YKO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="GcM-Kj-m8T"/>
+                            <constraint firstItem="ZCr-R5-YKO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="GcM-Kj-m8T"/>
                             <constraint firstItem="lPV-qb-UGb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R8O-8n-QE8"/>
-                            <constraint firstItem="lPV-qb-UGb" firstAttribute="top" secondItem="ZCr-R5-YKO" secondAttribute="bottom" constant="28" id="tuY-3Z-4Ae"/>
+                            <constraint firstItem="lPV-qb-UGb" firstAttribute="top" secondItem="ZCr-R5-YKO" secondAttribute="bottom" constant="10" id="tuY-3Z-4Ae"/>
                             <constraint firstItem="lPV-qb-UGb" firstAttribute="width" secondItem="ZCr-R5-YKO" secondAttribute="width" id="yIC-Cp-NeP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uuK-YD-JLR"/>
+                    <connections>
+                        <outlet property="photoDetailImageView" destination="ZCr-R5-YKO" id="lK8-vs-hjU"/>
+                        <outlet property="photoDetailTextfield" destination="lPV-qb-UGb" id="nMw-hX-jT4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -64,7 +68,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gbL-wh-fR3" id="rwO-DQ-z9D">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hXh-Th-KvQ">
@@ -105,7 +109,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="takePhoto" destination="OTw-PK-7wG" id="7XI-4g-mPC"/>
-                        <segue destination="BYZ-38-t0r" kind="push" identifier="GoToPhotoDetail" id="FeD-Td-i7b"/>
+                        <segue destination="BYZ-38-t0r" kind="push" identifier="GoToDetailPhotoPage" id="Z83-Jt-lcD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hui-Mh-xLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
