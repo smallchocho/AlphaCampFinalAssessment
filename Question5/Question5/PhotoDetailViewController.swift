@@ -9,14 +9,25 @@
 import UIKit
 
 class PhotoDetailViewController: UIViewController {
-    var photoImage:String?
-    var photoTextfield:String?
     @IBOutlet weak var photoDetailImageView: UIImageView!
     @IBOutlet weak var photoDetailTextfield: UITextField!
+    @IBAction func shareButton(_ sender: UIBarButtonItem) {
+    }
+    var photoImage:String?
+    var photoTextfield:String?
+    var photoDataBase:[Dictionary<String, String>]?
+    var selectRowAtPhotoTableView:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-        photoDetailTextfield.text = photoTextfield
-        photoDetailImageView.image = UIImage(named: photoImage!)
+        guard selectRowAtPhotoTableView != nil else {
+            print("selectRowAtPhotoTableView is nil")
+            return
+        }
+        photoImage = photoDataBase?[selectRowAtPhotoTableView!]["photoImageUrl"]
+        photoTextfield = photoDataBase?[selectRowAtPhotoTableView!]["photoLabel"]
+        let imageUrl = URL(string: photoImage!)
+        self.photoDetailImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "NowLoading"))
+        self.photoDetailTextfield.text = photoTextfield
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {

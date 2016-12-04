@@ -7,19 +7,25 @@
 //
 
 import UIKit
-
+import SDWebImage
 class PhotoTableViewController: UITableViewController {
-    var selectedPhotoImage:String?
-    var selectedLabel:String?
-    @IBOutlet weak var takePhoto: UIBarButtonItem!
-    let photoDataBase = [
-        ["photoImage":"神劍闖江湖-京都大火篇",
+    var photoDataBase = [
+        ["photoImageUrl":"https://upload.wikimedia.org/wikipedia/zh/3/3d/Rurouni_Kenshin,_Kyoto_Inferno_film_poster.jpg",
          "photoLabel":"神劍闖江湖-京都大火篇"],
-        ["photoImage":"神劍闖江湖-傳說的最終篇",
-         "photoLabel":"神劍闖江湖-傳說的最終篇"],
-        ["photoImage":"模仿遊戲",
-         "photoLabel":"模仿遊戲"],
-    ]
+        [
+            "photoImageUrl":"http://pic.pimg.tw/akiyon/1415541476-2977688954.jpg",
+            "photoLabel":"神劍闖江湖-傳說的最終篇"],
+        [
+            "photoImageUrl":"http://photocdn.sohu.com/20140910/Img404190751.jpg",
+            "photoLabel":"模仿遊戲"]
+        ]
+
+    var selectRowAtPhotoTableView:Int?
+    var takePhotoImage:UIImage?
+    @IBAction func takePhoto(_ sender: UIBarButtonItem) {
+        lunchCamera()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
@@ -46,14 +52,13 @@ class PhotoTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PhotoTableViewCell
-        cell.photoImage.image = UIImage(named: photoDataBase[indexPath.row]["photoImage"]!)
+        let imageUrl = URL(string: photoDataBase[indexPath.row]["photoImageUrl"]!)
+        cell.photoImage.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "NowLoading"))
         cell.dataLabel.text = photoDataBase[indexPath.row]["photoLabel"]
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedLabel = photoDataBase[indexPath.row]["photoLabel"]
-        selectedPhotoImage = photoDataBase[indexPath.row]["photoImage"]
-
+        selectRowAtPhotoTableView = indexPath.row
         performSegue(withIdentifier: "GoToDetailPhotoPage", sender: nil)
     }
     /*
@@ -92,12 +97,34 @@ class PhotoTableViewController: UITableViewController {
 
     
     // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! PhotoDetailViewController
-        destination.photoTextfield = selectedLabel
-        destination.photoImage = selectedPhotoImage
-    }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToDetailPhotoPage"{
+            let destination = segue.destination as! PhotoDetailViewController
+            destination.photoDataBase  = self.photoDataBase
+            destination.selectRowAtPhotoTableView = self.selectRowAtPhotoTableView
+        }
+        if segue.identifier == "GoToTakePhotoPage"{
+            let destination = segue.destination as! TakePhotoViewController
+            destination.takePhotoImage = self.takePhotoImage
+        }
+    }
+}
+    // MARK: - UIImagePicker
+extension PhotoTableViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    func lunchCamera(){
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        takePhotoImage = info["UIImagePickerControllerOriginalImage"] as? UIImage
+        dismiss(animated: true, completion: {
+            self.performSegue(withIdentifier: "GoToTakePhotoPage", sender: nil)
+        })
+    }
 }
