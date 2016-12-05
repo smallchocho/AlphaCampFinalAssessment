@@ -22,27 +22,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZCr-R5-YKO">
-                                <rect key="frame" x="37" y="64" width="300" height="300"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="rU2-fr-Uvg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入相片名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lPV-qb-UGb">
+                                        <rect key="frame" x="37" y="310" width="300" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="b9t-KW-X3X"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZCr-R5-YKO">
+                                        <rect key="frame" x="37" y="0.0" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="XGI-uo-8BB"/>
+                                            <constraint firstAttribute="width" constant="300" id="rZp-mM-6t1"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="U3E-HA-Pqh"/>
-                                    <constraint firstAttribute="height" constant="300" id="pJy-lC-sII"/>
+                                    <constraint firstItem="lPV-qb-UGb" firstAttribute="top" secondItem="ZCr-R5-YKO" secondAttribute="bottom" constant="10" id="CTQ-Xj-HVu"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZCr-R5-YKO" secondAttribute="trailing" constant="37.5" id="I4W-yj-ZFT"/>
+                                    <constraint firstAttribute="bottom" secondItem="lPV-qb-UGb" secondAttribute="bottom" constant="219" id="IzR-LS-NOB"/>
+                                    <constraint firstItem="ZCr-R5-YKO" firstAttribute="top" secondItem="rU2-fr-Uvg" secondAttribute="top" id="LH1-cl-P2s"/>
+                                    <constraint firstItem="ZCr-R5-YKO" firstAttribute="centerX" secondItem="rU2-fr-Uvg" secondAttribute="centerX" id="SzK-5G-ej0"/>
+                                    <constraint firstItem="lPV-qb-UGb" firstAttribute="centerX" secondItem="ZCr-R5-YKO" secondAttribute="centerX" id="jXk-hF-H1J"/>
+                                    <constraint firstAttribute="width" constant="375" id="uDu-Vn-7f7"/>
+                                    <constraint firstItem="ZCr-R5-YKO" firstAttribute="leading" secondItem="rU2-fr-Uvg" secondAttribute="leading" constant="37.5" id="wDB-uc-mDx"/>
                                 </constraints>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入相片名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lPV-qb-UGb">
-                                <rect key="frame" x="37" y="374" width="300" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="LOZ-XG-Cpg"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZCr-R5-YKO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EpX-2A-BR8"/>
-                            <constraint firstItem="ZCr-R5-YKO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="GcM-Kj-m8T"/>
-                            <constraint firstItem="lPV-qb-UGb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R8O-8n-QE8"/>
-                            <constraint firstItem="lPV-qb-UGb" firstAttribute="top" secondItem="ZCr-R5-YKO" secondAttribute="bottom" constant="10" id="tuY-3Z-4Ae"/>
-                            <constraint firstItem="lPV-qb-UGb" firstAttribute="width" secondItem="ZCr-R5-YKO" secondAttribute="width" id="yIC-Cp-NeP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rU2-fr-Uvg" secondAttribute="bottom" id="2Wb-jl-yML"/>
+                            <constraint firstAttribute="trailing" secondItem="rU2-fr-Uvg" secondAttribute="trailing" id="9HA-kA-RhU"/>
+                            <constraint firstItem="rU2-fr-Uvg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="eZi-p0-iTF"/>
+                            <constraint firstItem="rU2-fr-Uvg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yb1-oh-EMf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uuK-YD-JLR">
@@ -59,9 +79,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2703" y="-326"/>
+            <point key="canvasLocation" x="2701.5999999999999" y="-235.23238380809596"/>
         </scene>
-        <!--Photo Table View Controller-->
+        <!--照片列表-->
         <scene sceneID="JFQ-NR-ru8">
             <objects>
                 <tableViewController id="fee-JO-lOR" customClass="PhotoTableViewController" customModule="Question5" customModuleProvider="target" sceneMemberID="viewController">
@@ -110,13 +130,16 @@
                             <outlet property="delegate" destination="fee-JO-lOR" id="CIq-jd-PDy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="47s-ET-gFc">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="OTw-PK-7wG">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="照片列表" id="3cn-Ug-vF0">
+                        <barButtonItem key="backBarButtonItem" title=" " id="B55-Bi-GnV"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cMb-Hs-hhQ">
                             <connections>
-                                <action selector="takePhoto:" destination="fee-JO-lOR" id="ngC-rF-upn"/>
+                                <action selector="takePhoto:" destination="fee-JO-lOR" id="LYH-hw-tKb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="push" identifier="GoToDetailPhotoPage" id="Z83-Jt-lcD"/>
                         <segue destination="HyB-zH-0qg" kind="push" identifier="GoToTakePhotoPage" id="qfv-FF-bGE"/>
@@ -144,7 +167,7 @@
             </objects>
             <point key="canvasLocation" x="772" y="136.28185907046478"/>
         </scene>
-        <!--Take Photo View Controller-->
+        <!--編輯照片-->
         <scene sceneID="NHg-na-TIM">
             <objects>
                 <viewController id="HyB-zH-0qg" customClass="TakePhotoViewController" customModule="Question5" customModuleProvider="target" sceneMemberID="viewController">
@@ -179,7 +202,7 @@
                             <constraint firstItem="iAm-k4-4FQ" firstAttribute="top" secondItem="8zh-ae-OmF" secondAttribute="bottom" constant="10" id="mvM-X0-D9h"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wsd-ju-yGJ"/>
+                    <navigationItem key="navigationItem" title="編輯照片" id="ASl-lL-GkZ"/>
                     <connections>
                         <outlet property="takePhotoImageView" destination="8zh-ae-OmF" id="g7f-OC-kGJ"/>
                         <outlet property="takePhotoTextfield" destination="iAm-k4-4FQ" id="Xc9-uk-cwV"/>
@@ -187,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3b-nE-ukM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702" y="494"/>
+            <point key="canvasLocation" x="2702" y="436"/>
         </scene>
     </scenes>
 </document>

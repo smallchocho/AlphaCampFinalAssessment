@@ -12,6 +12,12 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var photoDetailImageView: UIImageView!
     @IBOutlet weak var photoDetailTextfield: UITextField!
     @IBAction func shareButton(_ sender: UIBarButtonItem) {
+        if photoDetailImageView.image != nil && photoDetailTextfield.text != nil{
+            let activityViewController = UIActivityViewController(activityItems: [photoDetailImageView.image!,photoDetailTextfield.text!], applicationActivities: nil)
+            present(activityViewController, animated: true, completion: nil)
+        }else{
+            print("photoDetailImageView.image is nil or photoDetailTextfield.text is nil")
+        }
     }
     var photoImage:String?
     var photoTextfield:String?
@@ -43,5 +49,9 @@ class PhotoDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+}
+extension PhotoDetailViewController:UIScrollViewDelegate{
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return photoDetailImageView
+    }
 }
