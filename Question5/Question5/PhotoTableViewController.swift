@@ -19,15 +19,17 @@ class PhotoTableViewController: UITableViewController {
         lunchCamera()
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(PhotoTableViewController.addDataToDatabase(notification:)), name: NSNotification.Name(rawValue:"TakePhotoViewController"), object: nil)
         photoDataBase = photoDatabase().photoDataBase
-        
+        if let database = UserDefaults.standard.array(forKey: "photoDataBase") as? [Dictionary<String,String>]{
+            photoDataBase = database
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(PhotoTableViewController.addDataToDatabase(notification:)), name: NSNotification.Name(rawValue:"TakePhotoViewController"), object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
-        print(photoDataBase)
+        printDataBaseAndDoc()
         self.tableView.reloadData()
     }
     
@@ -58,9 +60,21 @@ class PhotoTableViewController: UITableViewController {
         selectRowAtPhotoTableView = indexPath.row
         performSegue(withIdentifier: "GoToDetailPhotoPage", sender: nil)
     }
+    //執行刪除資料時,同時把photoDataBase的目前狀態寫入UserDefault中
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if let UrlOfPhotoData = URL(string: photoDataBase[indexPath.row]["photoImageUrl"]!){
+            do{
+                print("===UrlOfPhotoData:\(UrlOfPhotoData)====")
+                try FileManager.default.removeItem(at:UrlOfPhotoData)
+            }catch{
+                print("delete PhotoData Fail")
+            }
+        }
         photoDataBase.remove(at: indexPath.row)
         self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        UserDefaults.standard.set(photoDataBase, forKey: "photoDataBase")
+        UserDefaults.standard.synchronize()
+        printDataBaseAndDoc()
     }
     /*
      // Override to support conditional editing of the table view.
@@ -131,9 +145,18 @@ extension PhotoTableViewController:UIImagePickerControllerDelegate,UINavigationC
 }
 
 extension PhotoTableViewController{
+    //將回傳過來的addData增加進photoDataBase，並且將目前photoDataBase的值存進UserDefault
     func addDataToDatabase(notification:Notification){
         if let addData = notification.userInfo as? [String : String]{
             photoDataBase.append(addData)
+            UserDefaults.standard.set(photoDataBase, forKey: "photoDataBase")
+            UserDefaults.standard.synchronize()
         }
+    }
+    func printDataBaseAndDoc(){
+        let docUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let fileList = try! FileManager.default.contentsOfDirectory(atPath: (docUrl?.path)!)
+        print("===DocFile:\(fileList)====")
+        print("===PhotoDataBase:\(photoDataBase)====")
     }
 }

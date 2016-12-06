@@ -12,7 +12,6 @@ class TakePhotoViewController: UIViewController{
     var takePhotoImage:UIImage?
     @IBOutlet weak var takePhotoImageView: UIImageView!
     @IBOutlet weak var takePhotoTextfield: UITextField!
-    
     override func viewDidLoad(){
         super.viewDidLoad()
         self.takePhotoImageView.image = takePhotoImage
@@ -51,7 +50,7 @@ extension TakePhotoViewController{
         }
         let imageName = takePhotoTextfield.text!
         let imageUrl = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first
-        let url = imageUrl?.appendingPathComponent(imageName)
+        let url = imageUrl?.appendingPathComponent(imageName + ".jpg")
         guard let imageData = UIImageJPEGRepresentation(image, 0.9) else{
             print("imageData is nil")
             return
@@ -63,6 +62,5 @@ extension TakePhotoViewController{
         addData["photoImageUrl"] = String(describing: url!)
         addData["photoLabel"] = imageName
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:"TakePhotoViewController"), object: nil, userInfo: addData)
-        print(addData)
     }
 }

@@ -21,7 +21,7 @@ class PhotoDetailViewController: UIViewController {
     }
     var photoImage:String?
     var photoTextfield:String?
-    var photoDataBase:[Dictionary<String, String>]?
+    var photoDataBase:[Dictionary<String,String>]?
     var selectRowAtPhotoTableView:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
