@@ -50,7 +50,6 @@ class ViewController: UIViewController {
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         let postDate = Date()
-        let locale = Locale(identifier: "zh_TW")
         let dateFormatter = DateFormatter()
         let postDateString = dateFormatter.string(from: postDate)
         let postBody = ["time": postDateString]
