@@ -22,23 +22,24 @@
 解題思路：  
 1.生成CollectionViewController，其中利用UICollectionViewDelegateFlowLayout的方法，  
 來把Cell長跟寬調整為2*3格佔滿畫面，Cell之間的間距調整為0。  
-2.顯示一個AlerView：  
+2.顯示一個AlerView：  
 用UIAlertController生成，完成  
-3.顯示藍色,點擊後變成紅色,再次點擊又變成藍色：  
+3.顯示藍色,點擊後變成紅色,再次點擊又變成藍色：  
+3.顯示藍色,點擊後變成紅色,再次點擊又變成藍色：  
 每次點擊Cell時檢查Cell的backgroundColor，不是紅色就改成紅色，否則變更成藍色。  
-4.透過CoreMotion顯示使用者現在的步數，並且即時更新：  
-5.開啟APP在IOS設定的頁面：  
-在storyboard設立另一個ViewController，並和CollectionViewController建立segue，  
-用performSegue方法轉場到該ViewController。
+4.透過CoreMotion顯示使用者現在的步數，並且即時更新：  
+5.開啟APP在IOS設定的頁面：   
+在storyboard設立另一個ViewController，並和CollectionViewController建立segue，  
+用performSegue方法轉場到該ViewController。  
 6.打開GoogleMap或是Web導航至AlphaCamp：  
-設定好打開網頁版跟打開Ios應用程式的GoogleMAP並導航到AlphaCamp的連結，  
+設定好打開網頁版跟打開Ios應用程式的GoogleMAP並導航到AlphaCamp的連結，   
 先判定系統是否Ios10.0以上，  
 10.0以上：UIApplication.shared.open方法判別GoogleMap應用程式連結是否可用，  
 如不可用就在completionHandler中再呼叫一次UIApplication.shared.open去打開網頁版GoogleMap連結  
 Ios9以下：UIApplication.shared.canOpenURL判斷打開應用程式的URl是否可用，  
 如可用就用UIApplication.shared.openURL打開，  
-如不可用就用UIApplication.shared.openURL打開網頁版GooegleMap連結。完成
-7.開啟信箱並將標題寫上"測試信件"：  
+如不可用就用UIApplication.shared.openURL打開網頁版GooegleMap連結。完成  
+7.開啟信箱並將標題寫上"測試信件"：  
 遵從MFMailComposeViewControllerDelegate,UINavigationControllerDelegate，  
 並設定CollectionViewController為delegate，生成MFMailComposeViewController()物件，  
 並設定.setSubject、.setToRecipients、.setMessageBody，然後present出來。  
@@ -51,17 +52,17 @@ Ios9以下：UIApplication.shared.canOpenURL判斷打開應用程式的URl是否
 2.遵從UIImagePickerControllerDelegate,UINavigationControllerDelegate，  
 按下＋號後，生成UIImagePickerController()，並present出來，  
 拍完照片，按下Use用performSegue轉場到UIImagePickerController()，  
-拍出來的image用prepare方法傳值到PhotoDetailViewController並顯示出來，圖片大小訂為300*300。
-3.相片名稱的部分用Textfield讓使用者輸入文字。
-4.按下左上角返回鈕時，用viewWillDisappear捕捉View消失的事件，先判斷Textfield有無輸入文字，  
-如果有就把照片用Textfield的文字命名，並儲存進doc資料夾，  
+拍出來的image用prepare方法傳值到PhotoDetailViewController並顯示出來，圖片大小訂為300*300。  
+3.相片名稱的部分用Textfield讓使用者輸入文字。  
+4.按下左上角返回鈕時，用viewWillDisappear捕捉View消失的事件，先判斷Textfield有無輸入文字，   
+如果有就把照片用Textfield的文字命名，並儲存進doc資料夾，  
 最後把Textfield的String跟照片儲存路徑的Url存進Dictionary格式的變數，  
 使用NotificationCenter將Dictionary傳遞到PhotoTableViewController，  
 PhotoTableViewController接收到Dictionary後將其新增到Database裡頭，並執行TableView.reloadData。  
 ###5-2:
 1.點選PhotoTableView的Cell後轉場到PhotoDetailViewController，   
 PhotoDetailViewController遵從UIScrollViewDelegate，然後實作viewForZooming，  
-return PhotoDetailViewController的image，並設定image的最大放大比率跟最小縮小比率，圖片縮放功能就完成   
+return PhotoDetailViewController的image，並設定image的最大放大比率跟最小縮小比率，圖片縮放功能就完成  
 2.在PhotoTableViewController裡頭實作tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)方法，  
 在裡面執行刪除Database並刪除doc裡面的圖片，同時更新畫面。  
 3.生成UIActivityViewController並present出來，畫面上的圖片跟文字放入，完成。  
