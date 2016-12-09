@@ -10,15 +10,18 @@ import UIKit
 import CoreMotion
 class CoreMotionViewController: UIViewController {
     let motionManager = CMMotionManager()
+    let pedometer = CMPedometer()
     var resultMotion = 0
     @IBOutlet weak var directXValue: UILabel!
     @IBOutlet weak var directYValue: UILabel!
     @IBOutlet weak var directZValue: UILabel!
     @IBOutlet weak var motionCountValue: UILabel!
     @IBAction func startMotion(_ sender: UIButton) {
+        
         lucnchCoreMotion()
     }
     @IBAction func stopMotion(_ sender: UIButton) {
+        pedometer.stopUpdates()
         motionManager.stopDeviceMotionUpdates()
         self.resultMotion = 0
     }
@@ -27,6 +30,7 @@ class CoreMotionViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         // Do any additional setup after loading the view.
     }
@@ -74,6 +78,23 @@ class CoreMotionViewController: UIViewController {
             return
         }
         
+    }
+}
+extension CoreMotionViewController{
+    func lunchPedometer(){
+        if(CMPedometer.isStepCountingAvailable()){
+            self.pedometer.startUpdates(from: Date()) { (data: CMPedometerData?, error) -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
+                    guard error != nil else{
+                        return
+                    }
+                    guard let stepData = data else{
+                        return
+                    }
+                    self.motionCountValue.text = String(describing: stepData.numberOfSteps)
+                })
+            }
+        }
     }
 }
 //四捨五入的方法

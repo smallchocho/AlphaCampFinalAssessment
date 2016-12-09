@@ -227,9 +227,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="directXValue" destination="prc-WX-134" id="MB0-uf-nlM"/>
-                        <outlet property="directYValue" destination="TEL-32-MoL" id="upV-f5-dDI"/>
-                        <outlet property="directZValue" destination="DTp-Mo-1Ly" id="19K-OB-X2M"/>
+                        <outlet property="directXValue" destination="prc-WX-134" id="zk6-TR-FWY"/>
+                        <outlet property="directYValue" destination="TEL-32-MoL" id="6Nb-K5-blM"/>
+                        <outlet property="directZValue" destination="DTp-Mo-1Ly" id="Pv6-9n-5Rg"/>
                         <outlet property="motionCountValue" destination="hZG-Db-Q1u" id="sae-MC-2Sl"/>
                     </connections>
                 </viewController>
