@@ -89,6 +89,7 @@ return PhotoDetailViewController的image，並設定image的最大放大比率�
 3.生成UIActivityViewController並present出來，畫面上的圖片跟文字放入，完成。  
 
 ###5-3：
-使用UserDefaults儲存Database變數，每次資料新增或刪除時，就把更動後的Database變數存入UserDefaults更新， 
-於PhotoTableViewController的ViewDidLoad階段，   
-把PhotoTableViewController的Database載入UserDefaults的Database數據，完成  
+1.使用RealmSwift套件完成Local Database建構，資料模型建構在PhotoDataBase2.swift檔案裡面。  
+2.APP啟動時判定資料庫中有沒有任一個PhotoDataBase2List類別，如果沒有就生成初始值資料並寫入Datbase，  
+3.在addDataToDatabase將新增的相片相關資料寫入Database。
+4.刪除資料時先刪除照片的檔案，再刪除資料庫的相片相關資料。
