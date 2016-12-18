@@ -90,6 +90,6 @@ return PhotoDetailViewController的image，並設定image的最大放大比率�
 
 ###5-3：
 1.使用RealmSwift套件完成Local Database建構，資料模型建構在PhotoDataBase2.swift檔案裡面。  
-2.APP啟動時判定資料庫中有沒有任一個PhotoDataBase2List類別，如果沒有就生成初始值資料並寫入Datbase，  
+2.APP啟動時判定資料庫中有沒有任一個PhotoDataBase2List類別，如果沒有就生成初始值資料並寫入Datbase。  
 3.在addDataToDatabase將新增的相片相關資料寫入Database。  
 4.刪除資料時先刪除照片的檔案，再刪除資料庫的相片相關資料。

@@ -39,10 +39,6 @@ class PhotoTableViewController: UITableViewController {
         }
         //從Realm資料庫中撈出id是1的PhotoDataBase2List物件
         photoDataBaseList2 = uiRealm.objects(PhotoDataBase2List.self).filter("id = '1'")
-        photoDataBase = photoDatabase().photoDataBase
-        if let database = UserDefaults.standard.array(forKey: "photoDataBase") as? [Dictionary<String,String>]{
-            photoDataBase = database
-        }
         NotificationCenter.default.addObserver(self, selector: #selector(PhotoTableViewController.addDataToDatabase(notification:)), name: NSNotification.Name(rawValue:"TakePhotoViewController"), object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -77,7 +73,7 @@ class PhotoTableViewController: UITableViewController {
         selectRowAtPhotoTableView = indexPath.row
         performSegue(withIdentifier: "GoToDetailPhotoPage", sender: nil)
     }
-    //執行刪除資料時,同時把photoDataBase的目前狀態寫入UserDefault中(先刪檔，才刪資料庫)
+    //執行刪除資料時,同時更新Realm資料庫(先刪檔，才刪資料庫)
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //對照片檔案進行刪除：
         if let UrlOfPhotoData = URL(string: photoDataBaseList2[0].photoDataList[indexPath.row].photoImageUrl){
@@ -95,8 +91,6 @@ class PhotoTableViewController: UITableViewController {
         //動畫方式呈現刪除效果
         self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         //把最新資料存進UserDefault
-        UserDefaults.standard.set(photoDataBase, forKey: "photoDataBase")
-        UserDefaults.standard.synchronize()
         printDataBaseAndDoc()
     }
     /*
@@ -168,7 +162,7 @@ extension PhotoTableViewController:UIImagePickerControllerDelegate,UINavigationC
 }
 
 extension PhotoTableViewController{
-    //將回傳過來的addData增加進photoDataBase
+    //將回傳過來的addData增加進Realm資料庫
     func addDataToDatabase(notification:Notification){
         if let addData = notification.userInfo as? [String : PhotoDataBase2]{
             try! uiRealm.write {
@@ -180,6 +174,5 @@ extension PhotoTableViewController{
         let docUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let fileList = try! FileManager.default.contentsOfDirectory(atPath: (docUrl?.path)!)
         print("===DocFile:\(fileList)====")
-        print("===PhotoDataBase:\(photoDataBase)====")
     }
 }
