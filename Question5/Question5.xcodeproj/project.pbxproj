@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1236876BFC8D7EFA43086179 /* Pods_Question5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F97A5450DB5E7793087902 /* Pods_Question5.framework */; };
 		D0203F651DF404AA0068519F /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0203F641DF404AA0068519F /* TakePhotoViewController.swift */; };
-		D0203F671DF536470068519F /* photoDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0203F661DF536470068519F /* photoDatabase.swift */; };
+		D070239C1DFD60B300CB72C8 /* SpeciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D070239B1DFD60B300CB72C8 /* SpeciesModel.swift */; };
 		D08628881DF163C400D445D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08628871DF163C400D445D9 /* AppDelegate.swift */; };
 		D086288D1DF163C400D445D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D086288B1DF163C400D445D9 /* Main.storyboard */; };
 		D086288F1DF163C400D445D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D086288E1DF163C400D445D9 /* Assets.xcassets */; };
@@ -17,6 +17,8 @@
 		D086289A1DF172DF00D445D9 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08628991DF172DE00D445D9 /* PhotoTableViewCell.swift */; };
 		D086289C1DF1732F00D445D9 /* PhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086289B1DF1732F00D445D9 /* PhotoTableViewController.swift */; };
 		D086289E1DF176B100D445D9 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086289D1DF176B100D445D9 /* PhotoDetailViewController.swift */; };
+		D0E034F71DFEB8950084F967 /* photoDataBase2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E034F61DFEB8950084F967 /* photoDataBase2.swift */; };
+		D0E034F91DFEB91C0084F967 /* photoDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E034F81DFEB91C0084F967 /* photoDataBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +26,7 @@
 		98BD3CD45A160962566A4E21 /* Pods-Question5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Question5.release.xcconfig"; path = "Pods/Target Support Files/Pods-Question5/Pods-Question5.release.xcconfig"; sourceTree = "<group>"; };
 		A1F97A5450DB5E7793087902 /* Pods_Question5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Question5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0203F641DF404AA0068519F /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
-		D0203F661DF536470068519F /* photoDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = photoDatabase.swift; sourceTree = "<group>"; };
+		D070239B1DFD60B300CB72C8 /* SpeciesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesModel.swift; sourceTree = "<group>"; };
 		D08628841DF163C400D445D9 /* Question5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Question5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08628871DF163C400D445D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D086288C1DF163C400D445D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -34,6 +36,8 @@
 		D08628991DF172DE00D445D9 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		D086289B1DF1732F00D445D9 /* PhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewController.swift; sourceTree = "<group>"; };
 		D086289D1DF176B100D445D9 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		D0E034F61DFEB8950084F967 /* photoDataBase2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = photoDataBase2.swift; sourceTree = "<group>"; };
+		D0E034F81DFEB91C0084F967 /* photoDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = photoDataBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +90,9 @@
 				D086289B1DF1732F00D445D9 /* PhotoTableViewController.swift */,
 				D086289D1DF176B100D445D9 /* PhotoDetailViewController.swift */,
 				D0203F641DF404AA0068519F /* TakePhotoViewController.swift */,
-				D0203F661DF536470068519F /* photoDatabase.swift */,
+				D070239B1DFD60B300CB72C8 /* SpeciesModel.swift */,
+				D0E034F61DFEB8950084F967 /* photoDataBase2.swift */,
+				D0E034F81DFEB91C0084F967 /* photoDataBase.swift */,
 			);
 			path = Question5;
 			sourceTree = "<group>";
@@ -225,9 +231,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08628881DF163C400D445D9 /* AppDelegate.swift in Sources */,
-				D0203F671DF536470068519F /* photoDatabase.swift in Sources */,
+				D070239C1DFD60B300CB72C8 /* SpeciesModel.swift in Sources */,
+				D0E034F71DFEB8950084F967 /* photoDataBase2.swift in Sources */,
 				D086289C1DF1732F00D445D9 /* PhotoTableViewController.swift in Sources */,
 				D086289E1DF176B100D445D9 /* PhotoDetailViewController.swift in Sources */,
+				D0E034F91DFEB91C0084F967 /* photoDataBase.swift in Sources */,
 				D086289A1DF172DF00D445D9 /* PhotoTableViewCell.swift in Sources */,
 				D0203F651DF404AA0068519F /* TakePhotoViewController.swift in Sources */,
 			);

@@ -5,7 +5,6 @@
 //  Created by Justin Huang on 2016/12/5.
 //  Copyright © 2016年 Justin Huang. All rights reserved.
 //
-
 import Foundation
 class photoDatabase{
     var photoDataBase = [
@@ -18,5 +17,5 @@ class photoDatabase{
             "photoImageUrl":"http://photocdn.sohu.com/20140910/Img404190751.jpg",
             "photoLabel":"模仿遊戲"]
     ]
-
+    
 }

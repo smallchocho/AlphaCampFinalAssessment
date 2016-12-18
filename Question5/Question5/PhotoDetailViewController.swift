@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RealmSwift
 class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var photoDetailImageView: UIImageView!
     @IBOutlet weak var photoDetailTextfield: UITextField!
@@ -22,6 +22,7 @@ class PhotoDetailViewController: UIViewController {
     var photoImage:String?
     var photoTextfield:String?
     var photoDataBase:[Dictionary<String,String>]?
+    var photoDataBaseList2:Results<PhotoDataBase2List>!
     var selectRowAtPhotoTableView:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +30,8 @@ class PhotoDetailViewController: UIViewController {
             print("selectRowAtPhotoTableView is nil")
             return
         }
-        photoImage = photoDataBase?[selectRowAtPhotoTableView!]["photoImageUrl"]
-        photoTextfield = photoDataBase?[selectRowAtPhotoTableView!]["photoLabel"]
+        photoImage = photoDataBaseList2[0].photoDataList[selectRowAtPhotoTableView!].photoImageUrl
+        photoTextfield = photoDataBaseList2[0].photoDataList[selectRowAtPhotoTableView!].photoLabel
         let imageUrl = URL(string: photoImage!)
         self.photoDetailImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "NowLoading"))
         self.photoDetailTextfield.text = photoTextfield

@@ -56,11 +56,14 @@ extension TakePhotoViewController{
             return
         }
         try! imageData.write(to: url!)
-        var addData:[String:String] = [
-            "photoImageUrl":"",
-            "photoLabel":""]
-        addData["photoImageUrl"] = String(describing: url!)
-        addData["photoLabel"] = imageName
+        var addData:[String:PhotoDataBase2] = [
+            "1": PhotoDataBase2()]
+        addData["1"]?.photoImageUrl = String(describing: url!)
+        addData["1"]?.photoLabel = imageName
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY/MM/dd/HH:mm:ss"
+        addData["1"]?.id = dateFormatter.string(from: date)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:"TakePhotoViewController"), object: nil, userInfo: addData)
     }
 }
